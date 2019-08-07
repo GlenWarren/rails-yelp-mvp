@@ -1,0 +1,28 @@
+<h1>Restaurants#show</h1>
+
+<%= @restaurant.name %>
+<br>
+<%= @restaurant.address %>
+<br>
+<%= @restaurant.phone_number %>
+<br>
+<%= @restaurant.category.capitalize %>
+<br><br>
+<%= link_to 'Add Review', new_restaurant_review_path(@restaurant) %>
+<br>
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %>
+<br>
+<%= link_to 'Delete', @restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
+<br>
+<%= link_to 'Home', restaurants_path %>
+<br><br>
+CUSTOMER REVIEWS:
+<br><br>
+<% @restaurant.reviews.each do |review| %>
+  <%= review.content %>
+  <br>
+  stars:
+  <%= review.rating %>/5
+  <br>
+  <br>
+<% end %>
